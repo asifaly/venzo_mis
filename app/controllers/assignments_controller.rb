@@ -7,6 +7,26 @@ class AssignmentsController < ApplicationController
     @assignments = Assignment.all
   end
 
+  def today
+    @assignments = Assignment.today
+    render action: :index
+  end
+
+  def yesterday
+    @assignments = Assignment.yesterday
+    render action: :index
+  end
+
+  def thismonth
+    @assignments = Assignment.thismonth
+    render action: :index
+  end
+
+  def lastmonth
+    @assignments = Assignment.lastmonth
+    render action: :index
+  end
+
   # GET /assignments/1
   # GET /assignments/1.json
   def show
