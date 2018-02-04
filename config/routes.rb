@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :banks
+  resources :activities
   root to: 'assignments#index'
 
   resources :assignments do

@@ -2,6 +2,7 @@
 
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 <%= link_to "Sign up", new_user_registration_path %>
+<br />
 <%= link_to 'Tasks', tasks_path %>
 <%= link_to 'Today', today_assignments_path %>
 <%= link_to 'Yesterday', yesterday_assignments_path %>
@@ -13,6 +14,7 @@
 <table>
   <thead>
     <tr>
+      <th>Bank</th>
       <th>Task date</th>
       <th>User</th>
       <th>Project</th>
@@ -28,11 +30,12 @@
     <% @assignments.each do |assignment| %>
 
       <tr>
+        <td><%= assignment.task.bank.name %></td>
         <td><%= assignment.task_date %></td>
         <td><%= assignment.user.username %></td>
         <td><%= assignment.task.project %></td>
         <td><%= assignment.task.task_name %></td>
-        <td><%= assignment.task.activity_name %></td>
+        <td><%= assignment.activity.name %></td>
         <td><%= number_with_precision(assignment.hours, :precision => 2) || 0 %></td>
         <td><%= assignment.notes %></td>
         <td><%= link_to 'Show', assignment %></td>

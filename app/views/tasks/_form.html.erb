@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :bank %>
+    <%= form.collection_select(:bank_id, Bank.all, :id, :name) %>
+  </div>
+
+  <div class="field">
     <%= form.label :project %>
     <%= form.text_field :project, id: :task_project %>
   </div>
@@ -19,11 +24,6 @@
   <div class="field">
     <%= form.label :task_name %>
     <%= form.text_field :task_name, id: :task_task_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :activity_name %>
-    <%= form.text_field :activity_name, id: :task_activity_name %>
   </div>
 
   <div class="actions">

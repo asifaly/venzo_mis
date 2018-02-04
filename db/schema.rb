@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204101546) do
+ActiveRecord::Schema.define(version: 20180204144012) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "assignments", force: :cascade do |t|
     t.integer "task_id"
@@ -20,16 +26,25 @@ ActiveRecord::Schema.define(version: 20180204101546) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "hours", precision: 2, scale: 2
+    t.integer "activity_id"
+    t.index ["activity_id"], name: "index_assignments_on_activity_id"
     t.index ["task_id"], name: "index_assignments_on_task_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "banks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "project"
     t.string "task_name"
-    t.string "activity_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bank_id"
+    t.index ["bank_id"], name: "index_tasks_on_bank_id"
   end
 
   create_table "users", force: :cascade do |t|
