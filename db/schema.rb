@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204060451) do
+ActiveRecord::Schema.define(version: 20180204074113) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "user_id"
+    t.date "task_date"
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_assignments_on_task_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.string "project"
@@ -33,8 +44,10 @@ ActiveRecord::Schema.define(version: 20180204060451) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
