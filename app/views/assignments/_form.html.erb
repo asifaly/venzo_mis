@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :hours %>
+    <%= form.number_field :hours, id: :assignment_hours, :step => 0.01, :value => (number_with_precision(form.object.hours, :precision => 2) || 0) %>
+  </div>
+
+  <div class="field">
     <%= form.label :notes %>
     <%= form.text_field :notes, id: :assignment_notes %>
   </div>

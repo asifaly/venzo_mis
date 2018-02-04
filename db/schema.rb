@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204074113) do
+ActiveRecord::Schema.define(version: 20180204101546) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "task_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180204074113) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "hours", precision: 2, scale: 2
     t.index ["task_id"], name: "index_assignments_on_task_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
