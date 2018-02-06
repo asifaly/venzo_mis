@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<%= link_to "Sign up", new_user_registration_path %>
-<br />
-<%= link_to 'Tasks', tasks_path %>
 <%= link_to 'Today', today_assignments_path %>
 <%= link_to 'Yesterday', yesterday_assignments_path %>
 <%= link_to 'This Month', thismonth_assignments_path %>
@@ -49,3 +45,4 @@
 <br>
 
 <%= link_to 'New Assignment', new_assignment_path %>
+<%= link_to 'Back Home', root_path %>

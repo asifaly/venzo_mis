@@ -7,6 +7,11 @@ class AssignmentsController < ApplicationController
     @assignments = Assignment.all
   end
 
+  def byuser
+    @assignments = Assignment.byuser(params[:userid])
+    render action: :index
+  end
+
   def today
     @assignments = Assignment.today
     render action: :index
