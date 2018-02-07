@@ -1,4 +1,4 @@
-ruby '2.4.3p205'
+ruby '2.4.3', :patchlevel => '205'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
