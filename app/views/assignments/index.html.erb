@@ -46,3 +46,14 @@
 
 <%= link_to 'New Assignment', new_assignment_path %>
 <%= link_to 'Back Home', root_path %>
+
+
+<%= calendar number_of_days: 4, events: @assignments do |date, assignments| %>
+  <%= date %>
+
+  <% assignments.each do |assignment| %>
+    <div>
+      <%= assignment.task.project %>
+    </div>
+  <% end %>
+<% end %>

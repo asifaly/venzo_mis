@@ -14,4 +14,8 @@ class Assignment < ApplicationRecord
   scope :thismonth, -> { where("extract(month from task_date) = ?", Time.now.month) }
   scope :lastmonth, -> { where("extract(month from task_date) = ?", Time.now.month - 1) }
 
+  def start_time
+      self.task_date ##Where 'start' is a attribute of type 'Date' accessible through MyModel's relationship
+  end
+
 end
