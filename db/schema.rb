@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180204144012) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -19,14 +22,14 @@ ActiveRecord::Schema.define(version: 20180204144012) do
   end
 
   create_table "assignments", force: :cascade do |t|
-    t.integer "task_id"
-    t.integer "user_id"
+    t.bigint "task_id"
+    t.bigint "user_id"
     t.date "task_date"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "hours", precision: 2, scale: 2
-    t.integer "activity_id"
+    t.decimal "hours"
+    t.bigint "activity_id"
     t.index ["activity_id"], name: "index_assignments_on_activity_id"
     t.index ["task_id"], name: "index_assignments_on_task_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180204144012) do
     t.string "task_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "bank_id"
+    t.bigint "bank_id"
     t.index ["bank_id"], name: "index_tasks_on_bank_id"
   end
 
@@ -66,4 +69,6 @@ ActiveRecord::Schema.define(version: 20180204144012) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "assignments", "activities"
+  add_foreign_key "tasks", "banks"
 end

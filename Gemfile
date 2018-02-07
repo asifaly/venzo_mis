@@ -18,6 +18,7 @@ gem 'devise'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'pg', '0.20.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
