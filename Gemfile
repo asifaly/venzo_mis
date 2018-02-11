@@ -26,6 +26,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem 'hirb'
   gem 'guard'
   gem 'guard-rails', require: false

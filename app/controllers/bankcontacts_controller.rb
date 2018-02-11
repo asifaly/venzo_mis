@@ -4,7 +4,7 @@ class BankcontactsController < ApplicationController
   # GET /bankcontacts
   # GET /bankcontacts.json
   def index
-    @bankcontacts = Bankcontact.all
+    @bankcontacts = Bankcontact.includes(:bank, :contact =>[:role])
   end
 
   # GET /bankcontacts/1

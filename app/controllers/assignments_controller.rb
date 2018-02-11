@@ -4,31 +4,31 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    @assignments = Assignment.includes(:user, :activity, :task => [:bank])
   end
 
   def byuser
-    @assignments = Assignment.byuser(params[:userid])
+    @assignments = Assignment.byuser(params[:userid]).includes(:user, :activity, :task => [:bank])
     render action: :index
   end
 
   def today
-    @assignments = Assignment.today
+    @assignments = Assignment.today.includes(:user, :activity, :task => [:bank])
     render action: :index
   end
 
   def yesterday
-    @assignments = Assignment.yesterday
+    @assignments = Assignment.yesterday.includes(:user, :activity, :task => [:bank])
     render action: :index
   end
 
   def thismonth
-    @assignments = Assignment.thismonth
+    @assignments = Assignment.thismonth.includes(:user, :activity, :task => [:bank])
     render action: :index
   end
 
   def lastmonth
-    @assignments = Assignment.lastmonth
+    @assignments = Assignment.lastmonth.includes(:user, :activity, :task => [:bank])
     render action: :index
   end
 

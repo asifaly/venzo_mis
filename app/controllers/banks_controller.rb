@@ -15,12 +15,12 @@ class BanksController < ApplicationController
   # GET /banks/new
   def new
     @bank = Bank.new
-    @all_contacts = Contact.all
-    @bank_contact = @bank.bankcontacts.build
+    get_contact
   end
 
   # GET /banks/1/edit
   def edit
+    get_contact
   end
 
   # POST /banks
@@ -73,6 +73,11 @@ class BanksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bank
       @bank = Bank.find(params[:id])
+    end
+
+    def get_contact
+      @all_contacts = Contact.all
+      @bank_contact = @bank.bankcontacts.build
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

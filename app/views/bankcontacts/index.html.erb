@@ -7,6 +7,7 @@
     <tr>
       <th>Bank</th>
       <th>Contact</th>
+      <th>Title</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +15,9 @@
   <tbody>
     <% @bankcontacts.each do |bankcontact| %>
       <tr>
-        <td><%= bankcontact.bank_id %></td>
-        <td><%= bankcontact.contact_id %></td>
+        <td><%= bankcontact.bank.name %></td>
+        <td><%= bankcontact.contact.name %></td>
+        <td><%= bankcontact.contact.role.title %></td>
         <td><%= link_to 'Show', bankcontact %></td>
         <td><%= link_to 'Edit', edit_bankcontact_path(bankcontact) %></td>
         <td><%= link_to 'Destroy', bankcontact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
