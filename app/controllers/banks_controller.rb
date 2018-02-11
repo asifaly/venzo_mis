@@ -15,6 +15,8 @@ class BanksController < ApplicationController
   # GET /banks/new
   def new
     @bank = Bank.new
+    @all_contacts = Contact.all
+    @bank_contact = @bank.bankcontacts.build
   end
 
   # GET /banks/1/edit
@@ -25,6 +27,12 @@ class BanksController < ApplicationController
   # POST /banks.json
   def create
     @bank = Bank.new(bank_params)
+
+    params[:contacts][:id].each do |contact|
+      if !contact.empty?
+        @bank.bankcontacts.build(:contact_id => contact)
+      end
+    end
 
     respond_to do |format|
       if @bank.save

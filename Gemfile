@@ -1,5 +1,6 @@
-ruby '2.4.3', :patchlevel => '205'
 source 'https://rubygems.org'
+
+ruby '2.4.3', :patchlevel => '205'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")

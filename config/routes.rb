@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :bankcontacts
+  resources :roles
+  resources :contacts
   resources :banks
   resources :activities
   root to: 'home#dashboard'

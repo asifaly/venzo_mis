@@ -1,0 +1,27 @@
+<%= form_with(model: bankcontact, local: true) do |form| %>
+  <% if bankcontact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bankcontact.errors.count, "error") %> prohibited this bankcontact from being saved:</h2>
+
+      <ul>
+      <% bankcontact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :bank_id %>
+    <%= form.text_field :bank_id, id: :bankcontact_bank_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_id %>
+    <%= form.text_field :contact_id, id: :bankcontact_contact_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

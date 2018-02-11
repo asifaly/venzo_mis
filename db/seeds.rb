@@ -91,3 +91,48 @@ Assignment.create!([
   ])
 
 p "Created #{Assignment.count} assignments"
+
+
+Role.destroy_all
+
+Role.create!([
+  {title: 'QA Team Leader'},
+  {title: 'allNETT Developer'},
+  {title: 'IMEX Developer'},
+  {title: 'Project Manager'}
+  ])
+
+p "Created #{Role.count} roles"
+
+Contact.destroy_all
+
+Contact.create!([
+  {name: "Asaf Dahan", email: "Asaf.Dahan@surecomp.com", role_id: 1},
+  {name: "Udi Lubelski", email: "Udi.Lubelski@surecomp.com", role_id: 1},
+  {name: "Edi Oved", email: "Edi.Oved@surecomp.com", role_id: 1},
+  {name: "Ludmila Gavrilenko", email: "Ludmila.Gavrilenko@surecomp.com", role_id: 1},
+  {name: "Oded Tali", email: "Oded.Tali@surecomp.com", role_id: 1},
+  {name: "Eitan Laufer", email: "Eitan.Laufer@surecomp.com", role_id: 2},
+  {name: "Eti Mizarchi", email: "Eti.Mizarchi@surecomp.com", role_id: 2},
+  {name: "Eliran Mersika", email: "Eliran.Mersika@surecomp.com", role_id: 2},
+  {name: "David Malkian", email: "David.Malkian@surecomp.com", role_id: 4},
+  {name: "Andrea Stromer", email: "Andrea.Stromer@surecomp.com", role_id: 3},
+  {name: "Ron Gofman", email: "Ron.Gofman@surecomp.com", role_id: 3},
+  {name: "Liron Orkun", email: "Liron.Orkun@surecomp.com", role_id: 3},
+  {name: "Avi Boltanski", email: "Avi.Boltanski@surecomp.com", role_id: 4},
+  {name: "Jacob Weiss", email: "Jacob.Weiss@surecomp.com", role_id: 4},
+  {name: "Avihoo Elias", email: "Avihoo.Elias@surecomp.com", role_id: 2},
+  {name: "Tanya Zaritsky", email: "Tanya.Zaritsky@surecomp.com", role_id: 2},
+  {name: "Eli Rosenses", email: "Eli.Rosenses@surecomp.com", role_id: 4},
+  {name: "Sabrina Gabay", email: "Sabrina.Gabay@surecomp.com", role_id: 3},
+  {name: "Ester Horowitz", email: "Ester.Horowitz@surecomp.com", role_id: 3},
+  {name: "Hadasa Friedman", email: "Hadasa.Friedman@surecomp.com", role_id: 3},
+  {name: "David Porat", email: "David.Porat@surecomp.com", role_id: 3},
+  {name: "Dror Sabbag", email: "Dror.Sabbag@surecomp.com", role_id: 4},
+  {name: "Gili Sabbag", email: "Gili.Sabbag@surecomp.com", role_id: 3},
+  {name: "Christopher Jiminez", email: "Christopher.Jiminez@surecomp.com", role_id: 3},
+  {name: "Gabi Asher", email: "Gabi.Asher@surecomp.com", role_id: 4}
+  ])
+
+p "Created #{Contact.count} contacts"
+

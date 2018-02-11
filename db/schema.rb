@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204144012) do
+ActiveRecord::Schema.define(version: 20180211114622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,30 @@ ActiveRecord::Schema.define(version: 20180204144012) do
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
+  create_table "bankcontacts", force: :cascade do |t|
+    t.bigint "bank_id"
+    t.bigint "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "banks", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_contacts_on_role_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,5 +92,6 @@ ActiveRecord::Schema.define(version: 20180204144012) do
   end
 
   add_foreign_key "assignments", "activities"
+  add_foreign_key "contacts", "roles"
   add_foreign_key "tasks", "banks"
 end
