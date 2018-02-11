@@ -15,10 +15,10 @@
     <%= form.label :name %>
     <%= form.text_field :name, id: :bank_name %>
   </div>
-  <%= fields_for(@bank_contact) do |bc| %>
+  <%= fields_for(bank_contact) do |bc| %>
   <div class="field">
     <%= bc.label "All Contacts" %><br />
-    <%= collection_select(:contacts, :id, @all_contacts, :id, :name, {}, {:multiple => true}) %>
+    <%= collection_select(:contacts, :id, all_contacts, :id, :name, {}, {:multiple => true}) %>
   </div>
   <% end %>
 

@@ -26,12 +26,12 @@
     <% @assignments.each do |assignment| %>
 
       <tr>
-        <td><%= assignment.task.bank.name %></td>
+        <td><%= assignment.task_bank.name %></td>
         <td><%= assignment.task_date %></td>
-        <td><%= assignment.user.username %></td>
-        <td><%= assignment.task.project %></td>
-        <td><%= assignment.task.task_name %></td>
-        <td><%= assignment.activity.name %></td>
+        <td><%= assignment.user_username %></td>
+        <td><%= assignment.task_project %></td>
+        <td><%= assignment.task_task_name %></td>
+        <td><%= assignment.activity_name %></td>
         <td><%= number_with_precision(assignment.hours, :precision => 2) || 0 %></td>
         <td><%= assignment.notes %></td>
         <td><%= link_to 'Show', assignment %></td>

@@ -9,27 +9,27 @@ class AssignmentsController < ApplicationController
 
   def byuser
     @assignments = Assignment.byuser(params[:userid]).includes(:user, :activity, :task => [:bank])
-    render action: :index
+    render :index
   end
 
   def today
     @assignments = Assignment.today.includes(:user, :activity, :task => [:bank])
-    render action: :index
+    render :index
   end
 
   def yesterday
     @assignments = Assignment.yesterday.includes(:user, :activity, :task => [:bank])
-    render action: :index
+    render :index
   end
 
   def thismonth
     @assignments = Assignment.thismonth.includes(:user, :activity, :task => [:bank])
-    render action: :index
+    render :index
   end
 
   def lastmonth
     @assignments = Assignment.lastmonth.includes(:user, :activity, :task => [:bank])
-    render action: :index
+    render :index
   end
 
   # GET /assignments/1

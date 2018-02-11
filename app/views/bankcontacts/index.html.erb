@@ -15,9 +15,9 @@
   <tbody>
     <% @bankcontacts.each do |bankcontact| %>
       <tr>
-        <td><%= bankcontact.bank.name %></td>
-        <td><%= bankcontact.contact.name %></td>
-        <td><%= bankcontact.contact.role.title %></td>
+        <td><%= bankcontact.bank_name %></td>
+        <td><%= bankcontact.contact_name %></td>
+        <td><%= bankcontact.contact_role.title %></td>
         <td><%= link_to 'Show', bankcontact %></td>
         <td><%= link_to 'Edit', edit_bankcontact_path(bankcontact) %></td>
         <td><%= link_to 'Destroy', bankcontact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
