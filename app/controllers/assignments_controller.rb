@@ -12,23 +12,13 @@ class AssignmentsController < ApplicationController
     render :index
   end
 
-  def today
-    @assignments = Assignment.today.includes(:user, :activity, :task => [:bank])
+  def byday
+    @assignments = Assignment.byday(params[:inpdate]).includes(:user, :activity, :task => [:bank])
     render :index
   end
 
-  def yesterday
-    @assignments = Assignment.yesterday.includes(:user, :activity, :task => [:bank])
-    render :index
-  end
-
-  def thismonth
-    @assignments = Assignment.thismonth.includes(:user, :activity, :task => [:bank])
-    render :index
-  end
-
-  def lastmonth
-    @assignments = Assignment.lastmonth.includes(:user, :activity, :task => [:bank])
+  def bymonth
+    @assignments = Assignment.bymonth(params[:inpmonth]).includes(:user, :activity, :task => [:bank])
     render :index
   end
 
@@ -94,6 +84,6 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:task_date, :notes, :task_id, :user_id, :activity_id, :hours)
+      params.require(:assignment).permit(:task_date, :notes, :task_id, :user_id, :activity_id, :hours, :inpdate, :inpmonth)
     end
 end

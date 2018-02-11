@@ -9,10 +9,8 @@ Rails.application.routes.draw do
   resources :tasks
   resources :assignments do
     collection do
-      get :today
-      get :yesterday
-      get :thismonth
-      get :lastmonth
+      get :byday
+      get :bymonth
       get :byuser
     end
   end
