@@ -13,7 +13,7 @@ class Assignment < ApplicationRecord
   # scope :yesterday, -> { where("extract(day from task_date) = ?", Time.now.day - 1) }
   # scope :thismonth, -> { where("extract(month from task_date) = ?", Time.now.month) }
   # scope :lastmonth, -> { where("extract(month from task_date) = ?", Time.now.month - 1) }
-
+  validates :task_date, :hours, presence: true
 end
 
   #for sqlite3

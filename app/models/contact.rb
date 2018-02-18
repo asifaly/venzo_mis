@@ -5,4 +5,5 @@ class Contact < ApplicationRecord
   delegate :title, :to => :role, :prefix => true
   has_many :banks, through: :bankcontacts
   has_many :bankcontacts
+  validates :name, :email, presence: true
 end
