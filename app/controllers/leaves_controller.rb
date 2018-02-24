@@ -4,7 +4,7 @@ class LeavesController < ApplicationController
   # GET /leaves
   # GET /leaves.json
   def index
-    @leaves = Leave.all
+    @leaves = Leave.includes(:user)
   end
 
   # GET /leaves/1
