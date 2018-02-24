@@ -4,6 +4,6 @@ class Contact < ApplicationRecord
   delegate :name, :to => :bank, :prefix => true
   delegate :title, :to => :role, :prefix => true
   has_many :banks, through: :bankcontacts
-  has_many :bankcontacts
+  has_many :bankcontacts, dependent: :destroy
   validates :name, :email, presence: true
 end

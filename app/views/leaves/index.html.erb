@@ -15,7 +15,7 @@
     <% @leaves.each do |leave| %>
       <tr>
         <td><%= leave.leavedate %></td>
-        <td><%= leave.user %></td>
+        <td><%= leave.user_username %></td>
         <td><%= link_to 'Show', leave %></td>
         <td><%= link_to 'Edit', edit_leave_path(leave) %></td>
         <td><%= link_to 'Destroy', leave, method: :delete, data: { confirm: 'Are you sure?' } %></td>

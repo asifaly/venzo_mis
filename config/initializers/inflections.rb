@@ -15,5 +15,5 @@
 #   inflect.acronym 'RESTful'
 # end
 ActiveSupport::Inflector.inflections do |inflect|
-    inflect.irregular 'leave', 'leaves' 
+    inflect.irregular 'leave', 'leaves'
 end
