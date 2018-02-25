@@ -2,7 +2,10 @@
 
 <h1>Contacts</h1>
 
-<table class="table">
+<%= link_to 'New Contact', new_contact_path, class: "btn btn-primary" %>
+<%= link_to 'Back Home', root_path, class: "btn btn-secondary" %>
+
+<table class="table table-sm">
   <thead>
     <tr>
       <th>Name</th>
@@ -25,11 +28,5 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Contact', new_contact_path, class: "btn btn-primary" %>
-<%= link_to 'Back Home', root_path, class: "btn btn-secondary" %>
-
 
 

@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0'
 gem 'active_link_to'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'sqlite3'

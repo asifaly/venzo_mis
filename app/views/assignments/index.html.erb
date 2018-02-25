@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Today', byday_assignments_path(:inpdate => Time.now.day) %>
-<%= link_to 'Yesterday', byday_assignments_path(:inpdate => Time.now.day-1) %>
-<%= link_to 'This Month', bymonth_assignments_path(:inpmonth => Time.now.month) %>
-<%= link_to 'Last Month', bymonth_assignments_path(:inpmonth => Time.now.month-1) %>
+<%= link_to 'Today', byday_assignments_path(:inpdate => Time.now.day), class: "badge badge-info" %>
+<%= link_to 'Yesterday', byday_assignments_path(:inpdate => Time.now.day-1), class: "badge badge-info" %>
+<%= link_to 'This Month', bymonth_assignments_path(:inpmonth => Time.now.month), class: "badge badge-info" %>
+<%= link_to 'Last Month', bymonth_assignments_path(:inpmonth => Time.now.month-1), class: "badge badge-info" %>
 
 <h1>Assignments</h1>
-
-<table class="table">
+<%= link_to 'New Assignment', new_assignment_path, class: "btn btn-primary" %>
+<%= link_to 'Back Home', root_path, class: "btn btn-secondary" %>
+<table class="table table-sm">
   <thead>
     <tr>
       <th>Bank</th>
@@ -44,5 +45,3 @@
 
 <br>
 
-<%= link_to 'New Assignment', new_assignment_path, class: "btn btn-primary" %>
-<%= link_to 'Back Home', root_path, class: "btn btn-secondary" %>
