@@ -1,10 +1,11 @@
 class AssignmentsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.includes(:user, :activity, :task => [:bank])
+    @assignments = Assignment.includes(:user, :activity, :task => [:bank]).order(sort_column + " " + sort_direction)
   end
 
   def byuser
@@ -84,6 +85,14 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:task_date, :notes, :task_id, :user_id, :activity_id, :hours, :inpdate, :inpmonth)
+      params.require(:assignment).permit(:task_date, :notes, :task_id, :user_id, :activity_id, :hours, :inpdate, :inpmonth, :sort, :direction)
+    end
+
+    def sort_column
+      params[:sort] || "task_date"
+    end
+
+    def sort_direction
+      params[:direction] || "desc"
     end
 end

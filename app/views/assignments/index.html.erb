@@ -6,17 +6,17 @@
 <%= link_to 'Last Month', bymonth_assignments_path(:inpmonth => Time.now.month-1), class: "badge badge-info" %>
 
 <h1>Assignments</h1>
-<%= link_to 'New Assignment', new_assignment_path, class: "btn btn-primary" %>
-<%= link_to 'Back Home', root_path, class: "btn btn-secondary" %>
+<%= link_to 'New Assignment', new_assignment_path, class: "btn btn-primary btn-sm" %>
+<%= link_to 'Back Home', root_path, class: "btn btn-secondary btn-sm" %>
 <table class="table table-sm">
   <thead>
     <tr>
-      <th>Bank</th>
-      <th>Task date</th>
-      <th>User</th>
-      <th>Project</th>
-      <th>Task</th>
-      <th>Activity</th>
+      <th><%= sortable "Bank", "tasks.bank_id" %></th>
+      <th><%= sortable "Task date", "task_date" %></th>
+      <th><%= sortable "User", "user_id" %></th>
+      <th><%= sortable "Project", "tasks.project" %></th>
+      <th><%= sortable "Task", "task_id" %></th>
+      <th><%= sortable "Activity","activity_id" %></th>
       <th>Hours</th>
       <th>Notes</th>
       <th colspan="3"></th>
@@ -25,7 +25,6 @@
 
   <tbody>
     <% @assignments.each do |assignment| %>
-
       <tr>
         <td><%= assignment.task_bank.name %></td>
         <td><%= assignment.task_date %></td>
@@ -42,6 +41,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-

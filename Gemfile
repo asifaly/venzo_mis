@@ -17,11 +17,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0'
 gem 'active_link_to'
-gem 'font-awesome-rails'
+gem 'pg', '0.20.0'
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'pg', '0.20.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
@@ -44,7 +42,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.20.0'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
