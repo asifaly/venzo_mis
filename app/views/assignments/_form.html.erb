@@ -1,48 +1,50 @@
 <%= form_with(model: assignment, local: true) do |form| %>
-  <% if assignment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+	<% if assignment.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger alert-dismissable fade show" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+			<ul>
+				<% assignment.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-      <ul>
-      <% assignment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<div class="field">
+		<%= form.label :task_date %>
+		<%= form.date_select :task_date, id: :assignment_task_date %>
+	</div>
 
-  <div class="field">
-    <%= form.label :task_date %>
-    <%= form.date_select :task_date, id: :assignment_task_date %>
-  </div>
+	<div class="field">
+		<%= form.label :task %>
+		<%= form.collection_select(:task_id, Task.all, :id, :formatted_name) %>
+	</div>
 
-  <div class="field">
-    <%= form.label :task %>
-    <%= form.collection_select(:task_id, Task.all, :id, :formatted_name) %>
-  </div>
+	<div class="field">
+		<%= form.label :activity %>
+		<%= form.collection_select(:activity_id, Activity.all, :id, :name) %>
+	</div>
 
-  <div class="field">
-    <%= form.label :activity %>
-    <%= form.collection_select(:activity_id, Activity.all, :id, :name) %>
-  </div>
+	<div class="field">
+		<%= form.label :user %>
+		<%= form.collection_select(:user_id, User.all, :id, :username) %>
+	</div>
 
-  <div class="field">
-    <%= form.label :user %>
-    <%= form.collection_select(:user_id, User.all, :id, :username) %>
-  </div>
+	<div class="field">
+		<%= form.label :hours %>
+		<%= form.number_field :hours, id: :assignment_hours, :step => 0.01, :value => (number_with_precision(form.object.hours, :precision => 2) || 0) %>
+	</div>
 
-  <div class="field">
-    <%= form.label :hours %>
-    <%= form.number_field :hours, id: :assignment_hours, :step => 0.01, :value => (number_with_precision(form.object.hours, :precision => 2) || 0) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_field :notes, id: :assignment_notes %>
-  </div>
+	<div class="field">
+		<%= form.label :notes %>
+		<%= form.text_field :notes, id: :assignment_notes %>
+	</div>
 
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+	<div class="actions">
+		<%= form.submit %>
+	</div>
 <% end %>

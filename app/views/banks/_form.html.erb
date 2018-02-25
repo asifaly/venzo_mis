@@ -1,6 +1,9 @@
 <%= form_with(model: bank, local: true) do |form| %>
   <% if bank.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger alert-dismissable fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
       <h2><%= pluralize(bank.errors.count, "error") %> prohibited this bank from being saved:</h2>
 
       <ul>
@@ -15,13 +18,7 @@
     <%= form.label :name %>
     <%= form.text_field :name, id: :bank_name %>
   </div>
-  <%= fields_for(bank_contact) do |bc| %>
-  <div class="field">
-    <%= bc.label "All Contacts" %><br />
-    <%= collection_select(:contacts, :id, all_contacts, :id, :name, {}, {:multiple => true}) %>
-  </div>
-  <% end %>
-  <div class="actions">
+    <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

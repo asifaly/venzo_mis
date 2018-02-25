@@ -15,24 +15,16 @@ class BanksController < ApplicationController
   # GET /banks/new
   def new
     @bank = Bank.new
-    get_contact
   end
 
   # GET /banks/1/edit
   def edit
-    get_contact
   end
 
   # POST /banks
   # POST /banks.json
   def create
     @bank = Bank.new(bank_params)
-
-    params[:contacts][:id].each do |contact|
-      if !contact.empty?
-        @bank.bankcontacts.build(:contact_id => contact)
-      end
-    end
 
     respond_to do |format|
       if @bank.save
@@ -73,11 +65,6 @@ class BanksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bank
       @bank = Bank.find(params[:id])
-    end
-
-    def get_contact
-      @all_contacts = Contact.all
-      @bank_contact = @bank.bankcontacts.build
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

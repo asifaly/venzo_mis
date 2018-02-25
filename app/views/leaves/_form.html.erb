@@ -1,6 +1,9 @@
 <%= form_with(model: leave, local: true) do |form| %>
   <% if leave.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger alert-dismissable fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
       <h2><%= pluralize(leave.errors.count, "error") %> prohibited this leave from being saved:</h2>
 
       <ul>
