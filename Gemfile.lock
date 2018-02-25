@@ -24,6 +24,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_link_to (1.0.5)
+      actionpack
+      addressable
     activejob (5.1.4)
       activesupport (= 5.1.4)
       globalid (>= 0.3.6)
@@ -41,6 +44,8 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    autoprefixer-rails (8.0.0)
+      execjs
     bcrypt (3.1.11)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
@@ -49,6 +54,10 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bootstrap (4.0.0)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     bullet (5.7.2)
       activesupport (>= 3.0.0)
@@ -147,6 +156,7 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     pg (0.20.0)
+    popper_js (1.12.9)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -244,8 +254,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to
   better_errors
   binding_of_caller
+  bootstrap (~> 4.0.0)
   bullet
   byebug
   capybara (~> 2.13)

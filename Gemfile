@@ -15,6 +15,8 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
+gem 'bootstrap', '~> 4.0.0'
+gem 'active_link_to'
 
 group :development, :test do
   gem 'sqlite3'
