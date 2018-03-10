@@ -13,34 +13,35 @@
 		</div>
 	<% end %>
 
-	<div class="field">
+	<div class="form-group">
 		<%= form.label :task_date %>
-		<%= form.date_select :task_date, id: :assignment_task_date %>
+		<%= form.text_field :task_date, id: :assignment_task_date, :class => 'ui-datepicker form-control' %>
+<!-- 		<%= form.date_select(:task_date, id: :assignment_task_date, :class => 'datepicker') %> -->
 	</div>
 
-	<div class="field">
+	<div class="form-group">
 		<%= form.label :task %>
-		<%= form.collection_select(:task_id, Task.all, :id, :formatted_name) %>
+		<%= form.collection_select(:task_id, Task.all, :id, :formatted_name, {}, {:class=>'form-control'}) %>
 	</div>
 
-	<div class="field">
+	<div class="form-group">
 		<%= form.label :activity %>
-		<%= form.collection_select(:activity_id, Activity.all, :id, :name) %>
+		<%= form.collection_select(:activity_id, Activity.all, :id, :name, {}, {:class=>'form-control'}) %>
 	</div>
 
-	<div class="field">
+	<div class="form-group">
 		<%= form.label :user %>
-		<%= form.collection_select(:user_id, User.all, :id, :username) %>
+		<%= form.collection_select(:user_id, User.all, :id, :username, {}, {:class=>'form-control'}) %>
 	</div>
 
-	<div class="field">
+	<div class="form-group">
 		<%= form.label :hours %>
-		<%= form.number_field :hours, id: :assignment_hours, :step => 0.01, :value => (number_with_precision(form.object.hours, :precision => 2) || 0) %>
+		<%= form.number_field :hours, id: :assignment_hours, :step => 0.01, :value => (number_with_precision(form.object.hours, :precision => 2) || 0), :class => 'form-control' %>
 	</div>
 
-	<div class="field">
+	<div class="form-group">
 		<%= form.label :notes %>
-		<%= form.text_field :notes, id: :assignment_notes %>
+		<%= form.text_field :notes, id: :assignment_notes, :class => 'form-control' %>
 	</div>
 
 	<div class="actions">

@@ -14,9 +14,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :bank_name %>
+    <%= form.text_field :name, id: :bank_name, :class => 'form-control' %>
   </div>
     <div class="actions">
     <%= form.submit class:"btn btn-success btn-sm" %>

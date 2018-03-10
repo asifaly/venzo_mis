@@ -19,9 +19,9 @@
       <tr>
         <td><%= leave.leavedate %></td>
         <td><%= leave.user_username %></td>
-        <td><%= link_to 'Show', leave %></td>
-        <td><%= link_to 'Edit', edit_leave_path(leave) %></td>
-        <td><%= link_to 'Destroy', leave, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ <!--        <td><%= link_to 'Show', leave %></td> -->
+        <td><%= link_to 'Edit', edit_leave_path(leave), :class => "btn btn-success btn-sm" %></td>
+        <td><%= link_to 'Destroy', leave, :class => "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -12,7 +12,13 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
 //= require jquery3
+//= require_tree .
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery-ui/widgets/datepicker
+document.addEventListener("turbolinks:load", function() {
+   $( ".ui-datepicker" ).datepicker({
+      dateFormat: 'yy-mm-dd'
+   });
+})

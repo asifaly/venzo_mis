@@ -14,15 +14,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :leavedate %>
-    <%= form.date_select :leavedate, id: :leave_leavedate %>
+    <%= form.text_field :leavedate, id: :leave_leavedate, :class => 'ui-datepicker form-control' %>
   </div>
 
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :user %>
-    <%= form.collection_select(:user_id, User.all, :id, :username) %>
+    <%= form.collection_select(:user_id, User.all, :id, :username, {}, {:class=>'form-control'}) %>
   </div>
 
   <div class="actions">

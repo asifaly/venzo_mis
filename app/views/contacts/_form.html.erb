@@ -14,19 +14,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :contact_name %>
+    <%= form.text_field :name, id: :contact_name, :class => 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :contact_email %>
+    <%= form.text_field :email, id: :contact_email, :class => 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.collection_select(:role_id, Role.all, :id, :title) %>
+    <%= form.collection_select(:role_id, Role.all, :id, :title, {}, {:class=>'form-control'}) %>
   </div>
 
   <div class="actions">

@@ -14,14 +14,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :bank_id %>
-    <%= form.text_field :bank_id, id: :bankcontact_bank_id %>
+<!--     <%= form.text_field :bank_id, id: :bankcontact_bank_id, :class => 'form-control' %> -->
+    <%= form.collection_select(:bank_id, Bank.all, :id, :name, {}, {:class=>'form-control'}) %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :contact_id %>
-    <%= form.text_field :contact_id, id: :bankcontact_contact_id %>
+    <%= form.text_field :contact_id, id: :bankcontact_contact_id, :class => 'form-control' %>
   </div>
 
   <div class="actions">

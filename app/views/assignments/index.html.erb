@@ -19,10 +19,10 @@
       <th><%= sortable "Activity","activity_id" %></th>
       <th>Hours</th>
       <th>Notes</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
-
+test
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
@@ -34,9 +34,9 @@
         <td><%= assignment.activity_name %></td>
         <td><%= number_with_precision(assignment.hours, :precision => 2) || 0 %></td>
         <td><%= assignment.notes %></td>
-        <td><%= link_to 'Show', assignment %></td>
-        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--         <td><%= link_to 'Show', assignment %></td> -->
+        <td><%= link_to 'Edit', edit_assignment_path(assignment), :class => "btn btn-success btn-sm" %></td>
+        <td><%= link_to 'Destroy', assignment, :class => "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

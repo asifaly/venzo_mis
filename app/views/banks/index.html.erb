@@ -17,9 +17,9 @@
     <% @banks.each do |bank| %>
       <tr>
         <td><%= bank.name %></td>
-        <td><%= link_to 'Show', bank %></td>
-        <td><%= link_to 'Edit', edit_bank_path(bank) %></td>
-        <td><%= link_to 'Destroy', bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--         <td><%= link_to 'Show', bank %></td> -->
+        <td><%= link_to 'Edit', edit_bank_path(bank), :class => "btn btn-success btn-sm" %></td>
+        <td><%= link_to 'Destroy', bank, :class => "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

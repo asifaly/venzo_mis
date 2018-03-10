@@ -18,6 +18,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0'
 gem 'active_link_to'
 gem 'pg', '0.20.0'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
