@@ -19,6 +19,10 @@
 //= require jquery-ui/widgets/datepicker
 document.addEventListener("turbolinks:load", function() {
    $( ".ui-datepicker" ).datepicker({
-      dateFormat: 'yy-mm-dd'
+      dateFormat: 'yy-mm-dd',
+      beforeShowDay: $.datepicker.noWeekends,
+      maxDate: '+1m',
+      minDate: '-1w',
+      defaultDate: +2
    });
 })
