@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  project: MyString
-  task_name: MyString
-  activity_name: MyString
+    bank: one
+    project: 'allNETT 6.3 Upgrade'
+    task_name: allNETT Offsite QA Patches
 
 two:
-  project: MyString
-  task_name: MyString
-  activity_name: MyString
+    bank: two
+    project: DNB SWIFT 2018
+    task_name: Offsite QA

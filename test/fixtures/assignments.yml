@@ -1,9 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  task_date: 2018-02-04
-  notes: MyString
+    task: one
+    user: one
+    task_date: 2018-02-04
+    notes: Test 1
+    activity: one
+    hours: 9
 
 two:
-  task_date: 2018-02-04
-  notes: MyString
+    task: two
+    user: two
+    task_date: 2018-02-04
+    notes: Test 2
+    activity: two
+    hours: 4.5
+
+three:
+    task: two
+    user: one
+    task_date: 2018-02-04
+    notes: Test 3
+    activity: one
+    hours: 4.5
+
+four:
+    task: one
+    user: two
+    task_date: 2018-02-04
+    notes: Test 4
+    activity: two
+    hours: 4.5

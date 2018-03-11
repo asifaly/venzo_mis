@@ -31,4 +31,6 @@ development: &default
 
 test:
   <<: *default
+  adapter: postgresql
   database: mistest
+  host: localhost
