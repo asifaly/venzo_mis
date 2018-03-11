@@ -17,7 +17,7 @@ class BankcontactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create bankcontact" do
     assert_difference('Bankcontact.count') do
-      post bankcontacts_url, params: { bankcontact: { bank_id: @bankcontact.bank, contact_id: @bankcontact.contact } }
+      post bankcontacts_url, params: { bankcontact: { bank_id: @bankcontact.bank.id, contact_id: @bankcontact.contact.id } }
     end
 
     assert_redirected_to bankcontact_url(Bankcontact.last)
@@ -34,9 +34,8 @@ class BankcontactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update bankcontact" do
-    patch bankcontact_url(@bankcontact), params: { bankcontact: { bank_id: @bankcontact.bank, contact_id: @bankcontact.contact } }
-    assert_response :success
-    # assert_redirected_to bankcontact_url(@bankcontact)
+    patch bankcontact_url(@bankcontact), params: { bankcontact: { bank_id: @bankcontact.bank.id, contact_id: @bankcontact.contact.id } }
+    assert_redirected_to bankcontact_url(@bankcontact)
   end
 
   test "should destroy bankcontact" do

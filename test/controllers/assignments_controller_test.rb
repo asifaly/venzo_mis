@@ -17,7 +17,7 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create assignment" do
     assert_difference('Assignment.count') do
-      post assignments_url, params: { assignment: { task_id: @assignment.task, user_id: @assignment.user, activity_id: @assignment.activity, hours: @assignment.hours, notes: @assignment.notes, task_date: @assignment.task_date } }
+      post assignments_url, params: { assignment: { task_id: @assignment.task.id, user_id: @assignment.user.id, activity_id: @assignment.activity.id, hours: @assignment.hours, notes: @assignment.notes, task_date: @assignment.task_date } }
     end
 
     assert_redirected_to assignment_url(Assignment.last)
@@ -34,9 +34,8 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update assignment" do
-    patch assignment_url(@assignment), params: { assignment: { task_id: @assignment.task, user_id: @assignment.user, activity_id: @assignment.activity, hours: @assignment.hours, notes: @assignment.notes, task_date: @assignment.task_date } }
-    assert_response :success
-    # assert_redirected_to assignment_url(@assignment)
+    patch assignment_url(@assignment), params: { assignment: { task_id: @assignment.task.id, user_id: @assignment.user.id, activity_id: @assignment.activity.id, hours: @assignment.hours, notes: @assignment.notes, task_date: @assignment.task_date } }
+    assert_redirected_to assignment_url(@assignment)
   end
 
   test "should destroy assignment" do
