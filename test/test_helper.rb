@@ -14,4 +14,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  private
+
+  def check_back_home_button
+    click_on "Back Home"
+    assert_current_path root_path
+  end
 end

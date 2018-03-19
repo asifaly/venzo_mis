@@ -8,19 +8,53 @@ class BanksTest < ApplicationSystemTestCase
 
   test "creating a bank" do
     visit banks_url
+
     click_on "New Bank"
+
     assert_selector "h1", text: "New Bank"
-    fill_in "Name", with: "Bank of Test"
+
+    fill_in "Name", with: "Test Bank"
+
     click_on "Create Bank"
-    assert_text "Bank of Test" && "Bank was successfully created"
+
+    assert_current_path bank_path(Bank.last)
+    assert page.has_content? "Test Bank"
+    check_back_button
   end
 
   test "editing a bank" do
     @bank = Bank.last
-    visit edit_bank_url(@bank)
+
+    visit banks_url
+
+    find("a[href='/banks/#{@bank.id}/edit']").click
+
     assert_selector "h1", text: "Editing Bank"
-    fill_in "Name", with: "Update Bank of Test"
+
+    fill_in "Name", with: "Updated Test Bank"
+
     click_on "Update Bank"
-    assert_text "Update Bank of Test" && "Bank was successfully updated"
+
+    assert_current_path bank_path(Bank.last)
+    assert page.has_content? "Updated Test Bank"
+    check_back_button
+  end
+
+  test "deleting a bank" do
+    @bank = Bank.last
+
+    visit banks_url
+    accept_confirm do
+      find("a[href='/banks/#{@bank.id}']", :text => "Destroy").click
+    end
+    assert page.has_no_content? "Updated Test Bank"
+  end
+
+  private
+
+  def check_back_button
+    click_on "Back"
+    assert_current_path banks_path
+    check_back_home_button
   end
 end

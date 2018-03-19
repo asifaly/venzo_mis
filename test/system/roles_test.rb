@@ -8,19 +8,53 @@ class RolesTest < ApplicationSystemTestCase
 
   test "creating a role" do
     visit roles_url
+
     click_on "New Role"
+
     assert_selector "h1", text: "New Role"
-    fill_in "Title", with: "Role of Test"
+
+    fill_in "Title", with: "Test Title"
+
     click_on "Create Role"
-    assert_text "Role of Test" && "Role was successfully created"
+
+    assert_current_path role_path(Role.last)
+    assert page.has_content? "Test Title"
+    check_back_button
   end
 
   test "editing a role" do
     @role = Role.last
-    visit edit_role_url(@role)
+
+    visit roles_url
+
+    find("a[href='/roles/#{@role.id}/edit']").click
+
     assert_selector "h1", text: "Editing Role"
-    fill_in "Title", with: "Update Role of Test"
+
+    fill_in "Title", with: "Updated Test Title"
+
     click_on "Update Role"
-    assert_text "Update Role of Test" && "Role was successfully updated"
+
+    assert_current_path role_path(Role.last)
+    assert page.has_content? "Updated Test Title"
+    check_back_button
+  end
+
+  test "deleting a role" do
+    @role = Role.last
+
+    visit roles_url
+    accept_confirm do
+      find("a[href='/roles/#{@role.id}']", :text => "Destroy").click
+    end
+    assert page.has_no_content? "Updated Test Title"
+  end
+
+  private
+
+  def check_back_button
+    click_on "Back"
+    assert_current_path roles_path
+    check_back_home_button
   end
 end
