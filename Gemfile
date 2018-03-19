@@ -21,15 +21,22 @@ gem 'pg', '0.20.0'
 gem 'jquery-ui-rails'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  #gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'minitest', '5.10.3'
+  gem 'hirb'
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
+group :test do
+  gem 'simplecov', require: false
+  gem 'minitest-reporters'
 end
 
 group :development do
   gem 'bullet'
-  gem 'hirb'
   gem 'guard'
   gem 'guard-rails', require: false
   gem 'guard-livereload', '~> 2.5', require: false
@@ -38,9 +45,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "wirble"
+  gem 'rails_best_practices'
+  #gem "wirble"
 end
 
 group :production do
