@@ -15,6 +15,12 @@ class BanksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not create bank" do
+    assert_no_difference('Bank.count') do
+      post banks_url, params: { bank: { name: "" } }
+    end
+  end
+
   test "should create bank" do
     assert_difference('Bank.count') do
       post banks_url, params: { bank: { name: @bank.name } }
@@ -36,6 +42,11 @@ class BanksControllerTest < ActionDispatch::IntegrationTest
   test "should update bank" do
     patch bank_url(@bank), params: { bank: { name: @bank.name } }
     assert_redirected_to bank_url(@bank)
+  end
+
+  test "should not update bank" do
+    patch bank_url(@bank), params: { bank: { name: "" } }
+    assert_not @bank.errors.any?
   end
 
   test "should destroy bank" do

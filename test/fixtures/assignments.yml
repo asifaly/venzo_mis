@@ -3,7 +3,7 @@
 one:
     task: one
     user: one
-    task_date: 2018-02-04
+    task_date: <%= Date.today().to_s(:db) %>
     notes: Test 1
     activity: one
     hours: 9
@@ -11,7 +11,7 @@ one:
 two:
     task: two
     user: two
-    task_date: 2018-02-04
+    task_date: <%= Date.yesterday().to_s(:db) %>
     notes: Test 2
     activity: two
     hours: 4.5
@@ -19,7 +19,7 @@ two:
 three:
     task: two
     user: one
-    task_date: 2018-02-04
+    task_date: <%= Date.today().advance(:months => -1).to_s(:db) %>
     notes: Test 3
     activity: one
     hours: 4.5

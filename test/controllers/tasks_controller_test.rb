@@ -15,6 +15,20 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not create task" do
+    assert_no_difference('Task.count') do
+      post tasks_url, params: { task: { bank_id: @task.bank.id, project: "", task_name: @task.task_name } }
+    end
+
+    assert_no_difference('Task.count') do
+      post tasks_url, params: { task: { bank_id: @task.bank.id, project: @task.project, task_name: ""} }
+    end
+
+    assert_no_difference('Task.count') do
+      post tasks_url, params: { task: { bank_id: "", project: @task.project, task_name: @task.task_name} }
+    end
+  end
+
   test "should create task" do
     assert_difference('Task.count') do
       post tasks_url, params: { task: { bank_id: @task.bank.id, project: @task.project, task_name: @task.task_name } }
@@ -36,6 +50,11 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   test "should update task" do
     patch task_url(@task), params: { task: { bank_id: @task.bank.id, project: @task.project, task_name: @task.task_name } }
     assert_redirected_to task_url(@task)
+  end
+
+  test "should not update task" do
+    patch task_url(@task), params: { task: { bank_id: @task.bank.id, project: "", task_name: @task.task_name } }
+    assert_not @task.errors.any?
   end
 
   test "should destroy task" do

@@ -15,6 +15,15 @@ class LeavesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not create leave" do
+    assert_no_difference('Leave.count') do
+      post leaves_url, params: { leave: { leavedate: "", user_id: @leave.user_id } }
+    end
+    assert_no_difference('Leave.count') do
+      post leaves_url, params: { leave: { leavedate: @leave.leavedate, user_id: ""} }
+    end
+  end
+
   test "should create leave" do
     assert_difference('Leave.count') do
       post leaves_url, params: { leave: { leavedate: @leave.leavedate, user_id: @leave.user_id } }
@@ -36,6 +45,11 @@ class LeavesControllerTest < ActionDispatch::IntegrationTest
   test "should update leave" do
     patch leave_url(@leave), params: { leave: { leavedate: @leave.leavedate, user_id: @leave.user_id } }
     assert_redirected_to leave_url(@leave)
+  end
+
+  test "should not update leave" do
+    patch leave_url(@leave), params: { leave: { leavedate: "", user_id: @leave.user_id } }
+    assert_not @leave.errors.any?
   end
 
   test "should destroy leave" do

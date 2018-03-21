@@ -15,6 +15,12 @@ class RolesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not create role" do
+    assert_no_difference('Role.count') do
+      post roles_url, params: { role: { title: ""} }
+    end
+  end
+
   test "should create role" do
     assert_difference('Role.count') do
       post roles_url, params: { role: { title: @role.title } }
@@ -36,6 +42,11 @@ class RolesControllerTest < ActionDispatch::IntegrationTest
   test "should update role" do
     patch role_url(@role), params: { role: { title: @role.title } }
     assert_redirected_to role_url(@role)
+  end
+
+  test "should not update role" do
+    patch role_url(@role), params: { role: { title: "" } }
+    assert_not @role.errors.any?
   end
 
   test "should destroy role" do

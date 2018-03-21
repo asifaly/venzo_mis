@@ -15,6 +15,16 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not create contact" do
+    assert_no_difference('Contact.count') do
+      post contacts_url, params: { contact: { role_id: @contact.role.id, email: "", name: @contact.name } }
+    end
+
+    assert_no_difference('Contact.count') do
+      post contacts_url, params: { contact: { role_id: @contact.role.id, email: @contact.email, name: ""} }
+    end
+  end
+
   test "should create contact" do
     assert_difference('Contact.count') do
       post contacts_url, params: { contact: { role_id: @contact.role.id, email: @contact.email, name: @contact.name } }
@@ -36,6 +46,11 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   test "should update contact" do
     patch contact_url(@contact), params: { contact: { role_id: @contact.role.id, email: @contact.email, name: @contact.name } }
     assert_redirected_to contact_url(@contact)
+  end
+
+  test "should not update contact" do
+    patch contact_url(@contact), params: { contact: { role_id: @contact.role.id, email: "", name: @contact.name } }
+    assert_not @contact.errors.any?
   end
 
   test "should destroy contact" do

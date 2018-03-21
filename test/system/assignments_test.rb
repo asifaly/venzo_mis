@@ -4,6 +4,18 @@ class AssignmentsTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit assignments_url
     assert_selector "h1", text: "Assignments"
+
+    find("a", :text => "Today").click
+    assert_selector "td", text: assignments(:one).notes
+
+    find("a", :text => "Yesterday").click
+    assert_selector "td", text: assignments(:two).notes
+
+    find("a", :text => "This Month").click
+    assert_selector "td", text: assignments(:one).notes
+
+    find("a", :text => "Last Month").click
+    assert_selector "td", text: assignments(:three).notes
   end
 
   test "creating an assignment" do
@@ -13,7 +25,7 @@ class AssignmentsTest < ApplicationSystemTestCase
 
     assert_selector "h1", text: "New Assignment"
 
-    fill_in "Task date", with: "2018-03-20"
+    fill_in "Task date", with: Date.yesterday().to_s(:db)
 
     fill_in "Hours", with: "9.0"
 
@@ -22,7 +34,7 @@ class AssignmentsTest < ApplicationSystemTestCase
     click_on "Create Assignment"
 
     assert_current_path assignment_path(Assignment.last)
-    assert page.has_content? "2018-03-20"
+    assert page.has_content? Date.yesterday().to_s
     assert page.has_content? "9.0"
     assert page.has_content? "Test Assignment"
     check_back_button
@@ -37,7 +49,7 @@ class AssignmentsTest < ApplicationSystemTestCase
 
     assert_selector "h1", text: "Editing Assignment"
 
-    fill_in "Task date", with: "2018-03-22"
+    fill_in "Task date", with: Date.today().to_s(:db)
 
     fill_in "Hours", with: "8.0"
 
@@ -46,7 +58,7 @@ class AssignmentsTest < ApplicationSystemTestCase
     click_on "Update Assignment"
 
     assert_current_path assignment_path(Assignment.last)
-    assert page.has_content? "2018-03-22"
+    assert page.has_content? Date.today().to_s
     assert page.has_content? "8.0"
     assert page.has_content? "Updated Test Assignment"
     check_back_button

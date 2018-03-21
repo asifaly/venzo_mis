@@ -23,6 +23,12 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to activity_url(Activity.last)
   end
 
+  test "should not create activity" do
+    assert_no_difference('Activity.count') do
+      post activities_url, params: { activity: { name: ""} }
+    end
+  end
+
   test "should show activity" do
     get activity_url(@activity)
     assert_response :success
@@ -36,6 +42,11 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test "should update activity" do
     patch activity_url(@activity), params: { activity: { name: @activity.name } }
     assert_redirected_to activity_url(@activity)
+  end
+
+  test "should not update activity" do
+    patch activity_url(@activity), params: { activity: { name: "" } }
+    assert_not @activity.errors.any?
   end
 
   test "should destroy activity" do
