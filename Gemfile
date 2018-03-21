@@ -22,15 +22,15 @@ gem 'jquery-ui-rails'
 
 group :development, :test do
   #gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-  gem 'minitest', '5.10.3'
   gem 'hirb'
   gem "better_errors"
   gem "binding_of_caller"
 end
 
 group :test do
+  gem 'minitest', '5.10.3'
+  gem 'capybara', '~> 2.13'
+  gem 'poltergeist'
   gem 'simplecov', require: false
   gem 'minitest-reporters'
 end
