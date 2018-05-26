@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   resources :leaves
   root to: 'home#dashboard'
   resources :bankcontacts

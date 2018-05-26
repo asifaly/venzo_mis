@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class BankcontactsControllerTest < ActionDispatch::IntegrationTest
@@ -5,31 +7,31 @@ class BankcontactsControllerTest < ActionDispatch::IntegrationTest
     @bankcontact = bankcontacts(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get bankcontacts_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_bankcontact_url
     assert_response :success
   end
 
-  test "should not create bankcontact" do
+  test 'should not create bankcontact' do
     assert_no_difference('Bankcontact.count') do
-      post bankcontacts_url, params: { bankcontact: { bank_id: "", contact_id: @bankcontact.contact.id } }
+      post bankcontacts_url, params: { bankcontact: { bank_id: '', contact_id: @bankcontact.contact.id } }
     end
 
     assert_no_difference('Bankcontact.count') do
-      post bankcontacts_url, params: { bankcontact: { bank_id: @bankcontact.bank.id, contact_id: "" } }
+      post bankcontacts_url, params: { bankcontact: { bank_id: @bankcontact.bank.id, contact_id: '' } }
     end
 
     assert_no_difference('Bankcontact.count') do
-      post bankcontacts_url, params: { bankcontact: { bank_id: "", contact_id: "" } }
+      post bankcontacts_url, params: { bankcontact: { bank_id: '', contact_id: '' } }
     end
   end
 
-  test "should create bankcontact" do
+  test 'should create bankcontact' do
     assert_difference('Bankcontact.count') do
       post bankcontacts_url, params: { bankcontact: { bank_id: @bankcontact.bank.id, contact_id: @bankcontact.contact.id } }
     end
@@ -37,27 +39,27 @@ class BankcontactsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to bankcontact_url(Bankcontact.last)
   end
 
-  test "should show bankcontact" do
+  test 'should show bankcontact' do
     get bankcontact_url(@bankcontact)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_bankcontact_url(@bankcontact)
     assert_response :success
   end
 
-  test "should update bankcontact" do
+  test 'should update bankcontact' do
     patch bankcontact_url(@bankcontact), params: { bankcontact: { bank_id: @bankcontact.bank.id, contact_id: @bankcontact.contact.id } }
     assert_redirected_to bankcontact_url(@bankcontact)
   end
 
-  test "should not update bankcontact" do
-    patch bankcontact_url(@bankcontact), params: { bankcontact: { bank_id: "", contact_id: @bankcontact.contact.id } }
+  test 'should not update bankcontact' do
+    patch bankcontact_url(@bankcontact), params: { bankcontact: { bank_id: '', contact_id: @bankcontact.contact.id } }
     assert_not @bankcontact.errors.any?
   end
 
-  test "should destroy bankcontact" do
+  test 'should destroy bankcontact' do
     assert_difference('Bankcontact.count', -1) do
       delete bankcontact_url(@bankcontact)
     end

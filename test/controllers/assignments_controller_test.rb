@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class AssignmentsControllerTest < ActionDispatch::IntegrationTest
@@ -5,51 +7,51 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
     @assignment = assignments(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get assignments_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_assignment_url
     assert_response :success
   end
 
-  test "should not create assignment" do
+  test 'should not create assignment' do
     assert_no_difference('Assignment.count') do
       post assignments_url, params: { assignment: { task_id: @assignment.task.id, user_id: @assignment.user.id, activity_id: @assignment.activity.id, hours: @assignment.hours, notes: @assignment.notes } }
     end
   end
 
-  test "should create assignment" do
+  test 'should create assignment' do
     assert_difference('Assignment.count') do
-      post assignments_url, params: { assignment: { task_id: @assignment.task.id, user_id: @assignment.user.id, activity_id: @assignment.activity.id, hours: @assignment.hours, notes: @assignment.notes, task_date: @assignment.task_date } }
+      post assignments_url, params: { assignment: { task_id: @assignment.task.id, user_id: @assignment.user.id, activity_id: @assignment.activity.id, hours: @assignment.hours, notes: @assignment.notes } }
     end
 
     assert_redirected_to assignment_url(Assignment.last)
   end
 
-  test "should show assignment" do
+  test 'should show assignment' do
     get assignment_url(@assignment)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_assignment_url(@assignment)
     assert_response :success
   end
 
-  test "should update assignment" do
+  test 'should update assignment' do
     patch assignment_url(@assignment), params: { assignment: { task_id: @assignment.task.id, user_id: @assignment.user.id, activity_id: @assignment.activity.id, hours: @assignment.hours, notes: @assignment.notes, task_date: @assignment.task_date } }
     assert_redirected_to assignment_url(@assignment)
   end
 
-  test "should not update assignment" do
-    patch assignment_url(@assignment), params: { assignment: { task_id: @assignment.task.id, user_id: @assignment.user.id, activity_id: @assignment.activity.id, hours: @assignment.hours, notes: @assignment.notes, task_date: "" } }
+  test 'should not update assignment' do
+    patch assignment_url(@assignment), params: { assignment: { task_id: @assignment.task.id, user_id: @assignment.user.id, activity_id: @assignment.activity.id, hours: @assignment.hours, notes: @assignment.notes, task_date: '' } }
     assert_not @assignment.errors.any?
   end
 
-  test "should destroy assignment" do
+  test 'should destroy assignment' do
     assert_difference('Assignment.count', -1) do
       delete assignment_url(@assignment)
     end

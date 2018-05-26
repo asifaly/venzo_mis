@@ -1,32 +1,33 @@
+# frozen_string_literal: true
+
 class AssignmentsController < ApplicationController
   helper_method :sort_column, :sort_direction
-  before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :set_assignment, only: %i[show edit update destroy]
 
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.includes(:user, :activity, :task => [:bank]).order(sort_column + " " + sort_direction)
+    @assignments = Assignment.includes(:user, :activity, task: [:bank]).order(sort_column + ' ' + sort_direction)
   end
 
   def byuser
-    @assignments = Assignment.byuser(params[:userid]).includes(:user, :activity, :task => [:bank])
+    @assignments = Assignment.byuser(params[:userid]).includes(:user, :activity, task: [:bank])
     render :index
   end
 
   def byday
-    @assignments = Assignment.byday(params[:inpdate]).includes(:user, :activity, :task => [:bank])
+    @assignments = Assignment.byday(params[:inpdate]).includes(:user, :activity, task: [:bank])
     render :index
   end
 
   def bymonth
-    @assignments = Assignment.bymonth(params[:inpmonth]).includes(:user, :activity, :task => [:bank])
+    @assignments = Assignment.bymonth(params[:inpmonth]).includes(:user, :activity, task: [:bank])
     render :index
   end
 
   # GET /assignments/1
   # GET /assignments/1.json
-  def show
-  end
+  def show; end
 
   # GET /assignments/new
   def new
@@ -34,8 +35,7 @@ class AssignmentsController < ApplicationController
   end
 
   # GET /assignments/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /assignments
   # POST /assignments.json
@@ -78,21 +78,22 @@ class AssignmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_assignment
-      @assignment = Assignment.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def assignment_params
-      params.require(:assignment).permit(:task_date, :notes, :task_id, :user_id, :activity_id, :hours, :inpdate, :inpmonth, :sort, :direction)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_assignment
+    @assignment = Assignment.find(params[:id])
+  end
 
-    def sort_column
-      params[:sort] || "task_date"
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def assignment_params
+    params.require(:assignment).permit(:task_date, :notes, :task_id, :user_id, :activity_id, :hours, :inpdate, :inpmonth, :sort, :direction)
+  end
 
-    def sort_direction
-      params[:direction] || "desc"
-    end
+  def sort_column
+    params[:sort] || 'task_date'
+  end
+
+  def sort_direction
+    params[:direction] || 'desc'
+  end
 end

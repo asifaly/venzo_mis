@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'simplecov'
 SimpleCov.start
 puts 'SimpleCov Started Successfully!'
@@ -5,7 +7,7 @@ puts 'SimpleCov Started Successfully!'
 require 'minitest/reporters'
 Minitest::Reporters.use!
 
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
@@ -16,7 +18,7 @@ class ActiveSupport::TestCase
   private
 
   def check_back_home_button
-    click_on "Back Home"
+    click_on 'Back Home'
     assert_current_path root_path
   end
 end

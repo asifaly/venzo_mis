@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 class BankcontactsController < ApplicationController
-  before_action :set_bankcontact, only: [:show, :edit, :update, :destroy]
+  before_action :set_bankcontact, only: %i[show edit update destroy]
 
   # GET /bankcontacts
   # GET /bankcontacts.json
   def index
-    @bankcontacts = Bankcontact.includes(:bank, :contact =>[:role])
+    @bankcontacts = Bankcontact.includes(:bank, contact: [:role])
   end
 
   # GET /bankcontacts/1
   # GET /bankcontacts/1.json
-  def show
-  end
+  def show; end
 
   # GET /bankcontacts/new
   def new
@@ -18,8 +19,7 @@ class BankcontactsController < ApplicationController
   end
 
   # GET /bankcontacts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /bankcontacts
   # POST /bankcontacts.json
@@ -62,13 +62,14 @@ class BankcontactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bankcontact
-      @bankcontact = Bankcontact.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def bankcontact_params
-      params.require(:bankcontact).permit(:bank_id, :contact_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bankcontact
+    @bankcontact = Bankcontact.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def bankcontact_params
+    params.require(:bankcontact).permit(:bank_id, :contact_id)
+  end
 end

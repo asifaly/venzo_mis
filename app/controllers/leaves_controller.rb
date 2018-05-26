@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class LeavesController < ApplicationController
-  before_action :set_leave, only: [:show, :edit, :update, :destroy]
+  before_action :set_leave, only: %i[show edit update destroy]
 
   # GET /leaves
   # GET /leaves.json
@@ -9,8 +11,7 @@ class LeavesController < ApplicationController
 
   # GET /leaves/1
   # GET /leaves/1.json
-  def show
-  end
+  def show; end
 
   # GET /leaves/new
   def new
@@ -18,8 +19,7 @@ class LeavesController < ApplicationController
   end
 
   # GET /leaves/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /leaves
   # POST /leaves.json
@@ -62,13 +62,14 @@ class LeavesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_leave
-      @leave = Leave.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def leave_params
-      params.require(:leave).permit(:leavedate, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_leave
+    @leave = Leave.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def leave_params
+    params.require(:leave).permit(:leavedate, :user_id)
+  end
 end

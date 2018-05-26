@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class RolesControllerTest < ActionDispatch::IntegrationTest
@@ -5,23 +7,23 @@ class RolesControllerTest < ActionDispatch::IntegrationTest
     @role = roles(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get roles_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_role_url
     assert_response :success
   end
 
-  test "should not create role" do
+  test 'should not create role' do
     assert_no_difference('Role.count') do
-      post roles_url, params: { role: { title: ""} }
+      post roles_url, params: { role: { title: '' } }
     end
   end
 
-  test "should create role" do
+  test 'should create role' do
     assert_difference('Role.count') do
       post roles_url, params: { role: { title: @role.title } }
     end
@@ -29,27 +31,27 @@ class RolesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to role_url(Role.last)
   end
 
-  test "should show role" do
+  test 'should show role' do
     get role_url(@role)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_role_url(@role)
     assert_response :success
   end
 
-  test "should update role" do
+  test 'should update role' do
     patch role_url(@role), params: { role: { title: @role.title } }
     assert_redirected_to role_url(@role)
   end
 
-  test "should not update role" do
-    patch role_url(@role), params: { role: { title: "" } }
+  test 'should not update role' do
+    patch role_url(@role), params: { role: { title: '' } }
     assert_not @role.errors.any?
   end
 
-  test "should destroy role" do
+  test 'should destroy role' do
     assert_difference('Role.count', -1) do
       delete role_url(@role)
     end

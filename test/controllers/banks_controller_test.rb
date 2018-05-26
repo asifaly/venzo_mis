@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class BanksControllerTest < ActionDispatch::IntegrationTest
@@ -5,23 +7,23 @@ class BanksControllerTest < ActionDispatch::IntegrationTest
     @bank = banks(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get banks_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_bank_url
     assert_response :success
   end
 
-  test "should not create bank" do
+  test 'should not create bank' do
     assert_no_difference('Bank.count') do
-      post banks_url, params: { bank: { name: "" } }
+      post banks_url, params: { bank: { name: '' } }
     end
   end
 
-  test "should create bank" do
+  test 'should create bank' do
     assert_difference('Bank.count') do
       post banks_url, params: { bank: { name: @bank.name } }
     end
@@ -29,27 +31,27 @@ class BanksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to bank_url(Bank.last)
   end
 
-  test "should show bank" do
+  test 'should show bank' do
     get bank_url(@bank)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_bank_url(@bank)
     assert_response :success
   end
 
-  test "should update bank" do
+  test 'should update bank' do
     patch bank_url(@bank), params: { bank: { name: @bank.name } }
     assert_redirected_to bank_url(@bank)
   end
 
-  test "should not update bank" do
-    patch bank_url(@bank), params: { bank: { name: "" } }
+  test 'should not update bank' do
+    patch bank_url(@bank), params: { bank: { name: '' } }
     assert_not @bank.errors.any?
   end
 
-  test "should destroy bank" do
+  test 'should destroy bank' do
     assert_difference('Bank.count', -1) do
       delete bank_url(@bank)
     end

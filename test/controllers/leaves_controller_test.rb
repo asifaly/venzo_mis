@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class LeavesControllerTest < ActionDispatch::IntegrationTest
@@ -5,26 +7,26 @@ class LeavesControllerTest < ActionDispatch::IntegrationTest
     @leave = leaves(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get leaves_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_leave_url
     assert_response :success
   end
 
-  test "should not create leave" do
+  test 'should not create leave' do
     assert_no_difference('Leave.count') do
-      post leaves_url, params: { leave: { leavedate: "", user_id: @leave.user_id } }
+      post leaves_url, params: { leave: { leavedate: '', user_id: @leave.user_id } }
     end
     assert_no_difference('Leave.count') do
-      post leaves_url, params: { leave: { leavedate: @leave.leavedate, user_id: ""} }
+      post leaves_url, params: { leave: { leavedate: @leave.leavedate, user_id: '' } }
     end
   end
 
-  test "should create leave" do
+  test 'should create leave' do
     assert_difference('Leave.count') do
       post leaves_url, params: { leave: { leavedate: @leave.leavedate, user_id: @leave.user_id } }
     end
@@ -32,27 +34,27 @@ class LeavesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to leave_url(Leave.last)
   end
 
-  test "should show leave" do
+  test 'should show leave' do
     get leave_url(@leave)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_leave_url(@leave)
     assert_response :success
   end
 
-  test "should update leave" do
+  test 'should update leave' do
     patch leave_url(@leave), params: { leave: { leavedate: @leave.leavedate, user_id: @leave.user_id } }
     assert_redirected_to leave_url(@leave)
   end
 
-  test "should not update leave" do
-    patch leave_url(@leave), params: { leave: { leavedate: "", user_id: @leave.user_id } }
+  test 'should not update leave' do
+    patch leave_url(@leave), params: { leave: { leavedate: '', user_id: @leave.user_id } }
     assert_not @leave.errors.any?
   end
 
-  test "should destroy leave" do
+  test 'should destroy leave' do
     assert_difference('Leave.count', -1) do
       delete leave_url(@leave)
     end
